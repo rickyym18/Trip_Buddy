@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>main_page</title>
+</head>
+
+<body>
+    <h1>Trip Buddy</h1>
+
+    <h2>Welcome {{ session['user'] }}</h2>
+    <h2>Trips To Join</h2>
+    <div>
+        <table>
+            <tr>
+                <th>City</th>
+                <th>State</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Start time</th>
+            </tr>
+            {% for trip in trips %} 
+            <tr>
+                <td>{{ trip[1] }}</td>
+                <td>{{ trip[2] }}</td>
+                <td>{{ trip[3] }}</td>
+                <td>{{ trip[4] }}</td>
+                <td>{{ trip[5] }}</td>
+                <td> 
+                    <form action="/trip/delete" method="POST">
+                        <input type="text" name="id" value="{{trip[0]}}" hidden/>
+                        <input type="submit" value="delete"/>
+                    </form>
+                </td>
+                <td>
+                    <a href="/trip/{{trip[0]}}/update">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table> 
+    
+
+    <h2>Create a Trip</h2>
+    <div>
+        <form action="/trips" method="POST" class="">
+            <input type="text" name="city" placeholder="city" value="{{ request.form['city'] }}" />
+
+            <input type="text" name="state" placeholder="state" value="{{ request.form['state'] }}" />
+
+            <input type="text" name="category" placeholder="category" value="{{ request.form['category'] }}" />
+
+            <input type="text" name="date" placeholder="date" value="{{ request.form['date'] }}" />
+
+            <input type="text" name="start_time" placeholder="start time" value="{{ request.form['start_time'] }}" />
+
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+    <form action="/logout" method="POST" class="">
+        <input type="submit" value="Logout" />
+    </form>
+</body>
+
+</html>

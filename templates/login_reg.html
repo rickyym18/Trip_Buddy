@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>main_page</title>
+</head>
+<body>
+
+    <h1>Welcome To Trip Buddy</h1>
+
+
+    <h2>Register</h2>
+    <div>
+        <form action="/users" method="POST" class="">
+            <input type="text" name="username" placeholder="username" value="{{ request.form['username'] }}" />
+
+            <input type="text" name="password" placeholder="password" value="{{ request.form['password'] }}">
+
+            <input type="text" name="first_name" placeholder="first name" value="{{ request.form['first_name'] }}" />
+
+            <input type="text" name="last_name" placeholder="last name" value="{{ request.form['last_name'] }}" />
+
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+
+    <h2>Login</h2>
+    <div>
+        <form action="/login" method="POST" class="">
+            <input type="text" name="username" placeholder="username" value="{{ request.form['username'] }}" />
+
+            <input type="text" name="password" placeholder="password" value="{{ request.form['password'] }}">
+
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
